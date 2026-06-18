@@ -1,0 +1,1 @@
+!function(e){"use strict";e.behaviors.ScaffoldPlyrVideo={attach:function(e,i){Plyr.setup(".field--name-field-media-video-file video",{controls:["play-large","play","progress","current-time","mute","volume","captions","fullscreen"]})}}}((jQuery,window,Drupal),once);

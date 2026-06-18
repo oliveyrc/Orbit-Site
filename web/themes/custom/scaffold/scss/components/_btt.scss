@@ -1,0 +1,33 @@
+.btt {
+  background-color:black;
+  color: $white;
+  display: block;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;
+  line-height: 40px;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 999;
+  text-align: center;
+  box-shadow: 1px 0 10px 0 rgba(0,0,0,0.50);
+  @include media($tab) {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+  &:focus,
+  &:hover {
+    background-color: $white;
+    text-decoration: none;
+    color: $black;
+  }
+}

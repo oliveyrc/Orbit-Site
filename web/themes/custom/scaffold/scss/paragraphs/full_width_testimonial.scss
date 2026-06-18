@@ -1,0 +1,85 @@
+@import "../base-imports";
+
+.pt--full-width-testimonial {
+  color: $white;
+  position: relative;
+  overflow: hidden;
+  .image {
+    inset: 0;
+    position: absolute;
+
+    img {
+      display: block;
+      object-fit: cover;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  .image {
+    height: 240px;
+    @include media($tab) {
+      height: 384px;
+    }
+    @include media($desk) {
+      height: 600px;
+    }
+  }
+
+  .content {
+    z-index: 1;
+    position: relative;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    grid-column: 1;
+    @include media($tab) {
+      padding: 30px 30px 30px 80px;
+    }
+    &::before {
+      content: '"';
+      position: absolute;
+      top: 40px;
+      left: 30px;
+      font-size: 100px;
+      line-height: 1em;
+    }
+
+
+  }
+
+  .grid {
+    padding-bottom: 200px;
+    @include media($tab) {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+    @include media($desk) {
+      padding-bottom: 300px;
+    }
+  }
+
+  .quote {
+    font-size: 2rem;
+  }
+
+  .by {
+    font-size: 1.5rem;
+  }
+
+  &.right {
+    .content {
+      grid-column: 2;
+    }
+  }
+
+  .link {
+    margin-top: 1rem;
+    a {
+
+      @include btn();
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@import "../base-imports";
+
+.block-oyster-search.block-search-button {
+
+}
+
+.search-header-wrapper {
+  .search-block-form {
+    padding: 20px 0;
+    @include media($tab) {
+      padding: 20px 0;
+
+    }
+    @include media($desk) {
+      padding: 30px 0;
+    }
+
+    button {
+      font-size: 1.5rem;
+    }
+  }
+
+  .header {
+    display: block;
+  }
+
+  input {
+    color: $text;
+
+  }
+
+  .button {
+    min-width: 140px;
+  }
+
+  .close {
+    cursor: pointer;
+    padding-top: 20px;
+  }
+
+  span {
+    transform-origin: 50% 50%;
+    background-color: $white;
+    width: 40px;
+    height: 2px;
+    content: '';
+    display: block;
+    margin-bottom: 10px;
+
+    &.bar-1 {
+      rotate: 45deg;
+      transform: translateY(8px);
+    }
+
+    &.bar-2 {
+      rotate: -45deg;
+      transform: translateY(-7px);
+    }
+  }
+
+  .form-item,
+  .form-actions {
+    margin: 0;
+  }
+
+  form {
+    flex-grow: 1;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 30px;
+  }
+
+  .form-type-search {
+    flex-grow: 1;
+  }
+}

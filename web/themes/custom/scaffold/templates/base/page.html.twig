@@ -1,0 +1,90 @@
+<div class="search-header-wrapper">
+  <div class="grid">
+    {{ page.search_header }}
+  </div>
+</div>
+
+<div role="document" class="page">
+  <div class="header-wrapper">
+
+    <div class="header-top">
+      {{ page.headertop }}
+    </div>
+
+    {% if page.header %}
+      <header id="site-header">
+        {{ page.header }}
+      </header>
+    {% endif %}
+  </div>
+  {% if page.top_full %}
+    <div class="top-full-wrapper">
+      {{ page.top_full }}
+    </div>
+  {% endif %}
+  {% if page.featured %}
+    <section id="featured">
+      <div class="columns">
+        {{ page.featured }}
+      </div>
+    </section>
+  {% endif %}
+
+
+  <section id="breadcrumb">
+    <div class="outer-wrapper">
+      {{ page.breadcrumb }}
+    </div>
+  </section>
+
+  <div class="background-image">
+    <main role="main" class="outer-wrapper">
+      <a id="main-content" tabindex="-1"></a>
+      <section id="content">
+        {{ page.content }}
+      </section>
+      {% set sidebar_first = page.sidebar_first|render %}
+      {% if sidebar_first %}
+        <aside id="sidebar-first" role="complementary" class="sidebar">
+          {{ page.sidebar_first }}
+        </aside>
+      {% endif %}
+      {% set sidebar_second = page.sidebar_second|render %}
+      {% if sidebar_second %}
+        <aside id="sidebar-second" role="complementary" class="sidebar">
+          {{ page.sidebar_second }}
+        </aside>
+      {% endif %}
+    </main>
+  </div>
+  {% if page.bottom_full %}
+    <div class="bottom-full-wrapper">
+      {{ page.bottom_full }}
+    </div>
+  {% endif %}
+
+
+  <footer id="site-footer" role="contentinfo">
+    <a href="#" class="btt" title="{{ 'Back to top of page'|t }}"><i class="far fa-chevron-up"></i></a>
+    {% if page.footer_1 or page.footer_2 or page.footer_3 or page.footer_4 %}
+      <div class="footer-top-wrapper">
+        <section class="footer-top">
+          {{ page.footer_1 }}
+          {{ page.footer_2 }}
+          {{ page.footer_3 }}
+          {{ page.footer_4 }}
+        </section>
+      </div>
+    {% endif %}
+    {% if page.footer_5 or page.footer_6 %}
+      <div class="footer-bottom-wrapper">
+        <section class="footer-bottom">
+          {{ page.footer_5 }}
+          {{ page.footer_6 }}
+        </section>
+      </div>
+    {% endif %}
+
+  </footer>
+
+</div>

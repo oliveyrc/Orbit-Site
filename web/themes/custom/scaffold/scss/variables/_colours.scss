@@ -1,0 +1,38 @@
+// Color definitions
+$dark-gray: #333 !default;
+$medium-gray: #999 !default;
+$light-gray: #DDD !default;
+
+// Base colors.
+$base-background-color: white !default;
+$base-font-color: $dark-gray !default;
+$base-border-color: gainsboro !default;
+$base-accent-color: #477DCA !default;
+$base-link-color: $base-accent-color !default;
+$action-color: #477DCA !default;
+
+// Messages colors.
+$alert-color: #fff6bf !default;
+$error-color: #fbe3e4 !default;
+$notice-color: #e5edf8 !default;
+$success-color: #e6efc2 !default;
+
+// Footer colors.
+$footer-background: desaturate(darken($base-accent-color, 20%), 30%);
+$footer-color: white;
+$footer-link-color: transparentize($footer-color, 0.6);
+$footer-disclaimer-color: transparentize($footer-color, 0.35);
+
+// Colours
+$white: #fff;
+$black: #000;
+
+// Named colours
+$green: #8da82e;
+$grey: #828282;
+$black: #292927;
+$title: #000000;
+$border: #eeeeee;
+$text: #4d4d4f;
+$bg: #cccccc;
+

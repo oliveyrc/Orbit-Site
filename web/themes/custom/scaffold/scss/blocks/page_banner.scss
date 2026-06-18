@@ -1,0 +1,62 @@
+@import "../base-imports";
+
+.oyster-banner {
+  position: relative;
+  height: 240px;
+  color: $white;
+  background-color: #36799B;
+  @include media($tab) {
+    height: 384px;
+  }
+  @include media($desk) {
+    height: 600px;
+  }
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  .grid {
+    align-items: flex-start;
+    inset: 0;
+    display: flex;
+    padding: 30px;
+    position: absolute;
+    gap: 15px;
+    z-index: 9;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1.2em;
+  }
+
+  .sub-title {
+    font-size: 2rem;
+    line-height: 1.2em;
+  }
+
+  .link {
+    a {
+      @include btn();
+    }
+  }
+
+  &.half {
+    height: 200px;
+    @include media($tab) {
+      height: 200px;
+    }
+    @include media($tab) {
+      height: 300px;
+    }
+  }
+  &.min {
+    height: 200px;
+  }
+}

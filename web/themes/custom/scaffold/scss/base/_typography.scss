@@ -1,0 +1,414 @@
+body {
+  font-family: $base-font-family;
+  font-feature-settings: "kern", "liga", "pnum";
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  color: $text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font-family;
+  font-size: 16px;
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: $title;
+}
+
+h1 {
+  @include h1();
+}
+
+h2 {
+  @include h2();
+}
+
+h3 {
+  @include h3();
+}
+
+h4 {
+  @include h4();
+}
+
+h5 {
+  font-size: 1.1rem;
+  @include media($tab) {
+    font-size: 1.2rem;
+  }
+  @include media($desk) {
+    font-size: 1.3rem;
+  }
+}
+
+h6 {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0 0 20px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+
+    + * {
+      margin-top: 20px;
+    }
+  }
+}
+
+a {
+  color: $action-color;
+  text-decoration: none;
+  transition: color $base-duration $base-timing, background $base-duration $base-timing;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: shade($action-color, 25%);
+  }
+}
+
+main {
+  a {
+    text-decoration: underline;
+    font-weight: 700;
+  }
+}
+
+
+img,
+picture {
+  margin: 0;
+  max-width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.button {
+  @include btn();
+}
+
+
+.page {
+
+  ul {
+    margin: 20px 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 7px;
+      position: relative;
+      padding-left: 17px;
+      list-style: none;
+      @include fa("\f111", 'far');
+
+      &::before {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        font-size: 0.5rem;
+        color: $action-color;
+
+      }
+    }
+  }
+
+  ol {
+    counter-reset: item;
+    margin: 20px 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      padding-left: 17px;
+      margin-bottom: 7px;
+      list-style: none;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: counter(item) ". ";
+        counter-increment: item;
+        color: $action-color;
+      }
+    }
+  }
+}
+
+hr {
+  margin: 1.25rem 0;
+  height: 1px;
+  width: 100%;
+  border: none;
+  background: #f0f3e6;
+  @include media($tab) {
+    margin: 2rem 0;
+  }
+}
+
+img[style*="float:left"],
+.align-left {
+  margin: 0px 20px 20px 0px;
+}
+
+img[style*="left"] {
+  margin: 0px 20px 20px 0px;
+}
+
+img[style*="float:right"],
+.align-right {
+  margin: 0px 0px 20px 20px;
+}
+
+img[style*="right"] {
+  margin: 0px 0px 20px 20px;
+}
+
+.bg-image {
+  min-height: 250px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+
+iframe {
+  .swipebox-video & {
+    margin: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  iframe {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .media--type-remote-video &,
+  .field--name-body &,
+  .field--name-field-additional-body-text & {
+    margin: 0;
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    border: none;
+  }
+}
+
+.object-fit {
+  height: 100%;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+article.media {
+  display: block;
+  margin-bottom: 20px;
+
+  &.align-center,
+  &.align-left,
+  &.align-right {
+    display: inline-block;
+
+    &.media--type-document {
+      margin-right: 20px;
+    }
+  }
+
+  &.align-center {
+    display: block;
+    text-align: center;
+  }
+
+  &.align-left,
+  &.align-right {
+    @include media($tab) {
+      max-width: calc(50% - 20px);
+    }
+  }
+
+  &.btn {
+    background: none;
+    padding: 0;
+
+    .file {
+      background: none;
+      padding: 0;
+    }
+
+    a {
+      @include btn();
+    }
+  }
+
+  &.media--type-remote-video {
+    width: 100%;
+  }
+}
+
+.field--name-field-section-title {
+  @include h2();
+  margin-bottom: 40px;
+
+  .field--name-field-additional-body-elements & {
+    margin-bottom: 25px;
+    @include h3();
+  }
+}
+
+
+.oyster_two_col {
+  @include clearfix();
+  margin-bottom: 10px;
+  @include media($tab) {
+    margin-bottom: 20px;
+  }
+  @include media($desk) {
+    margin-bottom: 30px;
+  }
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  @include media($tab) {
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .oyster_left {
+    margin-bottom: 20px;
+    @include media($tab) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+.oyster_three_col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  @include media($tab) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+article {
+  .field--name-body {
+    margin-bottom: 1rem;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  font-feature-settings: "kern", "liga", "tnum";
+  table-layout: fixed;
+  width: 100%;
+  margin: 1rem 0;
+  border: 0;
+  @include media($tab) {
+    margin: 2rem 0;
+  }
+
+  caption {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: $bold;
+    @include media($tab) {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+  }
+
+  th {
+    padding: 1rem;
+    text-align: left;
+    background: $black;
+    color: $white;
+    font-weight: $bold;
+    border: 0;
+
+    @include media($desk) {
+      padding: 10px 15px;
+    }
+  }
+
+  tr {
+    td {
+      border: 0;
+      color: $text;
+      font-weight: $bold;
+      padding: 10px 15px;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    &:nth-child(odd) {
+      td {
+        background-color: $light-gray;
+      }
+    }
+
+    &:nth-child(even) {
+      td {
+        background: rgba($light-gray, 0.45);
+      }
+    }
+  }
+}
+
+
+tr,
+td,
+th {
+  vertical-align: middle;
+}
+
+.hscroll {
+  overflow-x: auto;
+  position: relative;
+  padding-top: 20px;
+  @include fa("\f07e");
+
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &:after {
+    content: 'Scroll to view';
+    display: block;
+    font-size: 0.75rem;
+    position: absolute;
+    top: 0;
+    left: 27px;
+  }
+}

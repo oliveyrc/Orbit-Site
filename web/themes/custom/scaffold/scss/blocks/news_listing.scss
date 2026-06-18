@@ -1,0 +1,12 @@
+@import "../base-imports";
+
+.block-oyster-news.block-news-listing {
+  ul.news-listing {
+    display: grid;
+    gap: 20px;
+    @include media($tab) {
+      gap: 30px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

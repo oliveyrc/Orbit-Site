@@ -1,0 +1,1 @@
+!function(o){"use strict";o.behaviors.ScaffoldImagegrid={attach:function(o,t){GLightbox({selector:".glightbox"})}}}((jQuery,window,Drupal),once);

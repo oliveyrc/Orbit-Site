@@ -1,0 +1,41 @@
+scaffold.mobile:
+  label: 'Mobile'
+  mediaQuery: '(max-width: 480px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+scaffold.tablet:
+  label: 'Tablet'
+  mediaQuery: '(min-width: 481px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+scaffold.large_tablet:
+  label: 'Large Tablet'
+  mediaQuery: '(min-width: 769px)'
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x
+scaffold.laptop:
+  label: 'Laptop'
+  mediaQuery: '(min-width: 848px)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 2x
+scaffold.desktop:
+  label: 'Desktop'
+  mediaQuery: '(min-width: 1281px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 2x
+scaffold.large_desktop:
+  label: 'Large Desktop'
+  mediaQuery: '(min-width: 1920px)'
+  weight: 4
+  multipliers:
+    - 1x

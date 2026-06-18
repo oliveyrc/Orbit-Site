@@ -1,0 +1,17 @@
+@import "../base-imports";
+
+.pt--quote {
+  padding: 20px 0;
+  @include media($tab) {
+    padding: 30px 0;
+  }
+  .quote {
+    font-size: 1.25rem;
+  }
+
+  .by {
+    font-style: italic;
+    margin-top: 1.5rem;
+  }
+
+}

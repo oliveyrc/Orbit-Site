@@ -1,0 +1,23 @@
+@import "../base-imports";
+
+.block-oyster-news.block-news-listing-alt {
+  ul.news-listing {
+    display: grid;
+    gap: 20px;
+    @include media($tab) {
+      gap: 30px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    li {
+      &:nth-child(1),
+      &:nth-child(5) {
+        @include media($tab) {
+          grid-column: 1/span 3;
+        }
+
+      }
+    }
+
+  }
+}

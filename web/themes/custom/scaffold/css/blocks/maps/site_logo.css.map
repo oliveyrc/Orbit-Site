@@ -1,0 +1,1 @@
+{"version":3,"sources":["site_logo.scss"],"names":[],"mappings":"AAAA,oCACE,aAAA,CAEA,sCACE,oBAAA,CAEF,wCAEE,aAAA,CADA,WACA","file":"../site_logo.css","sourcesContent":[".block-oyster.block-site-logo-block {\n  margin: 20px 0;\n\n  a {\n    display: inline-block;\n  }\n  img {\n    width: 200px;\n    display: block;\n  }\n}\n"]}

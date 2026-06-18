@@ -1,0 +1,423 @@
+global-styling:
+  version: 1
+  dependencies:
+    - scaffold/typekit
+    - scaffold/rcrumbs
+  css:
+    base:
+      css/scaffold.css:
+        weight: 2000
+        minified: true
+global-scripts:
+  version: 1
+  js:
+    js/scripts.js:
+      weight: 0
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+typekit:
+  css:
+    base:
+      'https://use.typekit.net/drm5qnw.css':
+        weight: 2000
+        attributes:
+          defer: true
+          async: true
+matchheight:
+  js:
+    libraries/matchheight/jquery.matchHeight.js:
+      weight: -5
+plyr:
+  js:
+    libraries/plyr/plyr.min.js:
+      weight: -5
+  css:
+    theme:
+      libraries/plyr/plyr.css: {  }
+rcrumbs:
+  js:
+    libraries/rcrumbs/jquery.rcrumbs.js: {  }
+  css:
+    theme:
+      css/blocks/breadcrumb.css: {  }
+responsive_tables:
+  js:
+    js/responsive-tables.js:
+      weight: -5
+  css:
+    theme:
+      css/responsive-tables.css: {  }
+slickslider:
+  version: 1.x
+  js:
+    libraries/slickslider/slick/slick.min.js: {  }
+  css:
+    theme:
+      libraries/slickslider/slick/slick.css: {  }
+      libraries/slickslider/slick/slick-theme.css: {  }
+swipebox:
+  version: 1.x
+  js:
+    libraries/swipebox/src/js/jquery.swipebox.min.js: {  }
+  css:
+    theme:
+      libraries/swipebox/src/css/swipebox.min.css: {  }
+glightbox:
+  version: 1.x
+  js:
+    libraries/glightbox/dist/js/glightbox.min.js: {  }
+  css:
+    theme:
+      libraries/glightbox/dist/css/glightbox.css: {  }
+select2:
+  version: 1.x
+  js:
+    vendor/select2/select2/dist/js/select2.min.js: {  }
+  css:
+    theme:
+      vendor/select2/select2/dist/css/select2.min.css: {  }
+waypoints:
+  version: 1.x
+  js:
+    libraries/waypoints/lib/jquery.waypoints.min.js: {  }
+    libraries/waypoints/lib/shortcuts/sticky.min.js: {  }
+uisearch:
+  js:
+    js/classie.js:
+      weight: -5
+    js/uisearch.js:
+      weight: -5
+  css:
+    theme:
+      css/blocks/search.css: {  }
+form.base:
+  css:
+    theme:
+      css/elements/form.css: {  }
+form.radio:
+  dependencies:
+    - scaffold/form.base
+  css:
+    theme:
+      css/elements/form_radio.css: {  }
+form.checkbox:
+  dependencies:
+    - scaffold/form.base
+  css:
+    theme:
+      css/elements/form_checkbox.css: {  }
+form.file:
+  dependencies:
+    - scaffold/form.base
+  css:
+    theme:
+      css/elements/form_file.css: {  }
+form.select:
+  dependencies:
+    - scaffold/form.base
+  js:
+    libraries/tom-select/build/js/tom-select.base.js: {  }
+    js/select.js: {  }
+  css:
+    theme:
+      libraries/tom-select/build/css/tom-select.default.css: {  }
+      css/elements/form_select.css: {  }
+homepage-banner:
+  version: 1.x
+  css:
+    theme:
+      css/blocks/homepage-banner.css: {  }
+page_banner:
+  version: 1.x
+  css:
+    theme:
+      css/blocks/page_banner.css: {  }
+page_banner.video:
+  dependencies:
+    - scaffold/page_banner
+  version: 1.x
+  js:
+    js/page_banner.video.js: {  }
+  css:
+    theme:
+      css/blocks/page_banner.video.css: {  }
+block.local_tasks:
+  version: 1.x
+  css:
+    theme:
+      css/blocks/local_tasks.css: {  }
+block.pager:
+  version: 1.x
+  css:
+    theme:
+      css/blocks/pager.css: {  }
+block.site_logo:
+  version: 1.x
+  css:
+    theme:
+      css/blocks/site_logo.css: {  }
+block.event_listing:
+  version: 1.x
+  css:
+    theme:
+      css/blocks/event_listing.css: {  }
+block.news_listing:
+  version: 1.x
+  css:
+    theme:
+      css/blocks/news_listing.css: {  }
+block.news_listing_alt:
+  version: 1.x
+  css:
+    theme:
+      css/blocks/news_listing_alt.css: {  }
+block.webform:
+  css:
+    theme:
+      css/blocks/webform.css: {  }
+block.form_base:
+  css:
+    theme:
+      css/blocks/form_base.css: {  }
+block.news:
+  css:
+    theme:
+      css/blocks/news.css: {  }
+node.news.teaser:
+  version: 1.x
+  css:
+    theme:
+      css/nodes/news_teaser.css: {  }
+node.news.teaser_large:
+  version: 1.x
+  css:
+    theme:
+      css/nodes/news_teaser_large.css: {  }
+node.event.teaser:
+  version: 1.x
+  css:
+    theme:
+      css/nodes/event_teaser.css: {  }
+node.event.teaser_large:
+  version: 1.x
+  css:
+    theme:
+      css/nodes/event_teaser_large.css: {  }
+
+node.vacancy.teaser:
+  version: 1.x
+  css:
+    theme:
+      css/nodes/vacancy.teaser.css: {  }
+
+paragraph.common:
+  css:
+    theme:
+      css/paragraphs/common.css: {  }
+paragraph.animation:
+  dependencies:
+    - scaffold/waypoints
+  css:
+    theme:
+      css/elements/animation.css: {  }
+      css/paragraphs/animation.css: {  }
+paragraph.50_50_image_image:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/50_50_image_image.css: {  }
+paragraph.video:
+  dependencies:
+    - scaffold/plyr
+  js:
+    js/video.js: {  }
+  css:
+    theme:
+      css/paragraphs/video.css: {  }
+paragraph.inline_cta:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/inline_cta.css: {  }
+paragraph.full_width_media_and_text:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/full_width_media_and_text.css: {  }
+paragraph.full_width_testimonial:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/full_width_testimonial.css: {  }
+paragraph.cta_grid:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/cta_grid.css: {  }
+paragraph.image_carousel:
+  dependencies:
+    - scaffold/paragraph.common
+    - scaffold/slickslider
+  js:
+    js/image_carousel.js: {  }
+  css:
+    theme:
+      css/paragraphs/image_carousel.css: {  }
+paragraph.image_grid:
+  dependencies:
+    - scaffold/paragraph.common
+    - scaffold/glightbox
+  js:
+    js/image_grid.js: {  }
+  css:
+    theme:
+      css/paragraphs/image_grid.css: {  }
+paragraph.cta_grid.animation:
+  dependencies:
+    - scaffold/paragraph.animation
+    - scaffold/paragraph.cta_grid
+  js:
+    js/cta_grid.js: {  }
+  css:
+    theme:
+      css/paragraphs/cta_grid.animation.css: {  }
+paragraph.50_50_text_and_image:
+  dependencies:
+    - scaffold/paragraph.common
+    - scaffold/swipebox
+  js:
+    js/50_50_text_and_image.js: {  }
+  css:
+    theme:
+      css/paragraphs/50_50_text_and_image.css: {  }
+
+paragraph.map:
+  css:
+    theme:
+      css/paragraphs/map.css: {  }
+  js:
+    https://maps.google.com/maps/api/js?libraries=geometry&key=AIzaSyBpl4a9pkdfl6DBoS6I6kkQCr4bXir4exQ: { type: external, minified: true, weight: -99999}
+    js/infobox.js: { weight: -2 }
+    js/paragraph.map.js: {  weight: -1}
+
+paragraph.featured_news:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/featured_news.css: {  }
+paragraph.featured_news_item:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/featured_news_item.css: {  }
+paragraph.featured_event:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/featured_event.css: {  }
+paragraph.additional_text:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/additional_text.css: {  }
+paragraph.quote:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/quote.css: {  }
+paragraph.in_this_section:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/in_this_section.css: {  }
+paragraph.useful_downloads:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/useful_downloads.css: {  }
+paragraph.page_toggles:
+  dependencies:
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/page_toggles.css: {  }
+  js:
+    js/page_toggles.js: {  }
+paragraph.page_quotes:
+  version: 1.x
+  dependencies:
+    - scaffold/slickslider
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/section_page_quotes.css: {  }
+paragraph.image_slider:
+  version: 1.x
+  dependencies:
+    - scaffold/slickslider
+    - scaffold/paragraph.common
+  css:
+    theme:
+      css/paragraphs/additional_image_slider.css: {  }
+paragraph.quote_slider:
+  version: 1.x
+  dependencies:
+    - scaffold/slickslider
+    - scaffold/paragraph.common
+  js:
+    js/quote_slider.js: {  }
+  css:
+    theme:
+      css/paragraphs/quote_slider.css: {  }
+paragraph.social_icon:
+  version: 1.x
+  css:
+    theme:
+      css/paragraphs/social_icon.css: {  }
+email:
+  css:
+    theme:
+      css/mail.css:
+        preprocess: false
+paragraph.aas:
+  version: 1.x
+  css:
+    theme:
+      css/paragraphs/aas.css: {  }
+paragraph.aasdasdasdasdasd:
+  version: 1.x
+  css:
+    theme:
+      css/paragraphs/aasdasdasdasdasd.css: {  }
+paragraph.oopopopopo:
+  version: 1.x
+  css:
+    theme:
+      css/paragraphs/oopopopopo.css: {  }
+
+block.search_button:
+  js:
+    js/search.js: {}
+  css:
+    theme:
+      css/blocks/search_button.css: { }
+
+media.image:
+  version: 1.0.0
+  css:
+    theme:
+      css/media/image.css: {  }

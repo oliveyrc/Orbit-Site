@@ -1,0 +1,1 @@
+!function(e,i,n){"use strict";i.behaviors.ScaffoldVideo={attach:function(i,o){e.isFunction(e.fn.swipebox)&&(i=e(".swipe-video, .swipebox-video",i),e(n("videoSwipebox",i)).swipebox())}}}(jQuery,(window,Drupal),once);

@@ -1,0 +1,14 @@
+@import "../base-imports";
+
+.vacancy-teaser {
+  display: grid;
+  gap: 20px;
+  @include media($tab) {
+    grid-template-columns: 8fr 4fr;
+  }
+
+
+  .label {
+    font-weight: $bold;
+  }
+}

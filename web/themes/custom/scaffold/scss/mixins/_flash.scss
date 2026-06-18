@@ -1,0 +1,18 @@
+@mixin flash($color) {
+  background-color: $color;
+  color: darken($color, 60%);
+  display: block;
+  margin-bottom: $spacing-small;
+  padding: $spacing-small $spacing-small $spacing-small 50px;
+  border-radius: 5px;
+
+  a {
+    color: darken($color, 70%);
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: darken($color, 90%);
+    }
+  }
+}

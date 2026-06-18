@@ -1,0 +1,30 @@
+figure {
+  margin: 0;
+  padding: 0;
+
+  img,picture {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .image {
+    position: relative;
+  }
+  .image-credit {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #666;
+    border-inline-start: 1px solid #ccc;
+    padding-inline-start: 0.5rem;
+  }
+}

@@ -1,0 +1,151 @@
+html {
+  box-sizing: border-box;
+}
+
+* {
+  min-height: 0;
+  min-width: 0;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  main,
+  header,
+  .headertop,
+  .grid,
+  .outer-wrapper,
+  .footer-top,
+  .footer-bottom {
+    @include outer-container;
+    width: 100%;
+    padding: 0 20px;
+    @include media($tab) {
+      padding: 0 30px;
+    }
+  }
+
+  &.no-sidebars {
+    main {
+      display: grid;
+
+      section#content {
+
+      }
+    }
+  }
+
+  &.one-sidebar.sidebar-first {
+    main {
+      @include media($tab) {
+        display: grid;
+        grid-column-gap: $grid-gap-medium;
+        grid-template-columns: 4fr 8fr;
+      }
+      @include media($desk) {
+        // grid-template-columns: 3fr 9fr;
+        grid-column-gap: $grid-gap-large;
+      }
+
+      aside {
+        &#sidebar-first {
+          @include media($tab) {
+            order: 1;
+          }
+        }
+      }
+
+      section#content {
+        @include media($tab) {
+          order: 2;
+        }
+      }
+    }
+  }
+
+  &.one-sidebar.sidebar-second {
+    main {
+      #main-content {
+        @include media($tab) {
+          grid-column: 1 / span 2;
+        }
+      }
+
+      @include media($tab) {
+        display: grid;
+        grid-column-gap: $grid-gap-medium;
+        grid-template-columns: 8fr 4fr;
+      }
+      @include media($desk) {
+        grid-column-gap: $grid-gap-large;
+        // grid-template-columns: 9fr 3fr;
+      }
+
+      aside {
+        &#sidebar-second {
+          @include media($tab) {
+            order: 2;
+
+          }
+        }
+      }
+
+      section#content {
+        @include media($tab) {
+          order: 1
+
+        }
+      }
+    }
+  }
+
+  &.two-sidebars {
+    main {
+      #main-content {
+        @include media($tab) {
+          grid-column: 1 / span 3;
+        }
+      }
+
+      @include media($tab) {
+        display: grid;
+        grid-column-gap: $grid-gap-medium;
+        grid-template-columns: 3fr 6fr 3fr;
+      }
+      @include media($desk) {
+        grid-column-gap: $grid-gap-large;
+      }
+
+      aside {
+        &#sidebar-first {
+          @include media($tab) {
+            order: 1;
+          }
+        }
+
+        &#sidebar-second {
+          @include media($tab) {
+            order: 3;
+          }
+        }
+      }
+
+      section#content {
+        @include media($tab) {
+          order: 2;
+        }
+      }
+    }
+  }
+}

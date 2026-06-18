@@ -1,0 +1,8 @@
+{% set parent = media._referringItem.parent.parent.entity %}
+<a href="{{ content.field_media_oembed_video.0 }}" class="swipebox-video" rel="gallery-{{ parent.id()}}">
+  <div class="video">
+    {{ content.field_thumbnail.0 }}
+    {{ title_suffix.contextual_links }}
+    <div class="play-button"><i class="far fa-play-circle"></i></div>
+  </div>
+</a>

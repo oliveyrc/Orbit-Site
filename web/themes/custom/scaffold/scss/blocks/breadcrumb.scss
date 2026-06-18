@@ -1,0 +1,90 @@
+@import "../base-imports";
+
+.page {
+  nav.breadcrumb {
+    padding: 0;
+    margin: 0;
+
+    ul {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+
+      li {
+        vertical-align: middle;
+        margin: 0;
+        padding: 0;
+        &::before {
+          display: none;
+        }
+
+        > a {
+          padding: 10px 10px 10px 0;
+          display: inline-block;
+          color: $text;
+          position: relative;
+
+          &:hover {
+            color: $action-color;
+          }
+
+          &::before {
+            position: absolute;
+            right: 0;
+            top: 14px;
+            background-color: $text;
+            bottom: 14px;
+            content: ' ';
+            width: 1px;
+            display: block;
+          }
+
+          &:last-of-type {
+            margin-right: 10px;
+          }
+        }
+
+      }
+    }
+  }
+
+  .block-system-breadcrumb-block {
+    width: 100%;
+  }
+
+  #breadcrumb {
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    .breadcrumb {
+      padding: 0;
+    }
+  }
+
+  .rcrumbs {
+    white-space: nowrap;
+  }
+
+  .rcrumbs > ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  .rcrumbs > ul > li {
+    overflow: hidden;
+    display: none;
+  }
+
+  .rcrumbs > ul > li.show {
+    display: inline-block;
+  }
+
+  .rcrumbs > ul > li.ellipsis {
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

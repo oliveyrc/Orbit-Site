@@ -1,0 +1,29 @@
+name: Scaffold
+type: theme
+description: Oyster Theme V3 - Return of the Mac
+core_version_requirement: ^10 || ^11
+'base theme': stable9
+libraries:
+  - scaffold/global-styling
+  - scaffold/global-scripts
+
+regions:
+  search_header: Search Header
+  headertop: Header Top
+  header: Header
+  top_full: Top Full
+  featured: Featured
+  breadcrumb: Breadcrumb
+  #  sidebar_first: 'Sidebar first'
+  content: Content
+  bottom_full: Bottom Full
+  sidebar_second: 'Sidebar'
+  footer_1: 'Footer 1'
+  footer_2: 'Footer 2'
+  footer_3: 'Footer 3'
+  footer_4: 'Footer 4'
+  footer_5: 'Footer 5'
+  footer_6: 'Footer 6'
+
+ckeditor5-stylesheets:
+  - css/ckeditor.css

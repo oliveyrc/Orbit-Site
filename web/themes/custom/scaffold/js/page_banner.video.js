@@ -1,0 +1,1 @@
+!function(n,e){"use strict";e.behaviors.ScaffoldBannerVideo={attach:function(e,a){var t=document.getElementById("banner-video");n(".block-page-banner .controls button").on("click",function(e){t.paused?(t.play(),n(this).attr("aria-pressed","false")):(t.pause(),n(this).attr("aria-pressed","true"))})}}}(jQuery,(window,Drupal),once);

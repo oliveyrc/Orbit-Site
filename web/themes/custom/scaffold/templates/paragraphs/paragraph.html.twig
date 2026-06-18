@@ -1,0 +1,20 @@
+{{ attach_library('scaffold/paragraph.') }}
+{%
+  set classes = [
+    'p',
+    ('pt--' ~ paragraph.bundle)|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    remove_margin_top,
+    remove_margin_bottom,
+    add_margin_top,
+    add_margin_bottom,
+    background_colour    
+  ]
+%}
+{% block paragraph %}
+  <section{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {{ content|without('field_remove_bottom_margin', 'field_oyster_pt_admin_desc') }}
+    {% endblock %}
+  </section>
+{% endblock paragraph %}

@@ -1,0 +1,22 @@
+{{ attach_library('scaffold/paragraph.map') }}
+
+{% set classes = [
+  'p',
+  'pt--' ~ paragraph.bundle|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+] %}
+{% block paragraph %}
+  <section{{ attributes.addClass(classes) }} {% if logged_in %}{{ attributes.setAttribute('id', 'p--id--'~paragraph.id() ) }}{% endif %}>
+    {% block content %}
+      {% if not paragraph.field_oyster_pt_section_title.isEmpty() %}
+        <h2>{{ content.field_oyster_pt_section_title.0 }}</h2>
+      {% endif %}
+      {% if not paragraph.field_oyster_pt_section_intro.isEmpty() %}
+        <div class="intro">{{ content.field_oyster_pt_section_intro.0 }}</div>
+      {% endif %}
+      <div id="map"></div>
+
+      {{ content|without('field_oyster_pt_map_tooltip_imag','field_oyster_pt_map_pin','field_oyster_pt_map_tooltip_text', 'field_oyster_pt_section_intro', 'field_oyster_pt_admin_desc','field_quote', 'field_pin_centre', 'field_oyster_pt_section_title','field_opt_google_map_tooltip','field_image') }}
+    {% endblock %}
+  </section>
+{% endblock paragraph %}

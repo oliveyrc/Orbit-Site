@@ -1,0 +1,12 @@
+@import "../base-imports";
+
+.block-oyster-event.block-event-listing {
+  ul.listing {
+    display: grid;
+    gap: 20px;
+    @include media($tab) {
+      gap: 30px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

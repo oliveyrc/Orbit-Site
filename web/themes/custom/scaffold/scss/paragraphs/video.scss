@@ -1,0 +1,12 @@
+@import "../base-imports";
+
+.pt--oyster-pt-video {
+  .field--name-field-media-oembed-video {
+    iframe {
+      display: block;
+      aspect-ratio: 16/9;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

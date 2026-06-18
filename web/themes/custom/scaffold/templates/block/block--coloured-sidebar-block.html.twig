@@ -1,0 +1,30 @@
+{{ attach_library('scaffold/block.colored_sidebar_block') }}
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'colour-' ~ colour,
+    icon,
+    'triangle-' ~ triangle,
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2 {{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  <div class="block__content">
+    {% if triangle == "yes" %}
+      <div class="triangle"></div>
+    {% endif %}
+    {% if icon_code %}
+      {{ icon_code }}
+    {% endif %}
+    {% block content %}
+      {{ content|without('field_background_colour', 'field_icon', 'field_background_triangle') }}
+    {% endblock %}
+  </div>
+</div>

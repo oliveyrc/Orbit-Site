@@ -1,0 +1,31 @@
+@import "../base-imports";
+
+.pt--_0-50-image-image {
+
+  .field--name-field-field-oyster-pt-50-50-ii-i {
+    display: grid;
+    @include media($tab) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    > div {
+      position: relative;
+      height: 300px;
+      @include media($tab) {
+        height: 500px;
+      }
+      @include media($desk) {
+        height: 900px;
+      }
+    }
+  }
+
+  img {
+    display: block;
+    object-fit: cover;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+}

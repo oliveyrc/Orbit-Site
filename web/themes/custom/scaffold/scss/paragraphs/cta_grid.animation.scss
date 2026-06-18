@@ -1,0 +1,15 @@
+@import "../base-imports";
+$elements: 20;
+.pt--cta-grid {
+  .items {
+    > div {
+      animation-duration: var(--animate-duration, 300ms);
+      animation-fill-mode: both;
+      @for $i from 0 to $elements {
+       &:nth-child(#{$i + 1}) {
+         animation-delay: $i * 200ms;
+        }
+      }
+    }
+  }
+}

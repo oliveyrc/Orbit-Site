@@ -1,0 +1,72 @@
+@import "../base-imports";
+@import "../mixins/fa";
+
+.pt--image-grid {
+  margin-bottom: 1rem;
+  header {
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+
+  .field--name-field-oyster-pt-image-grid-image {
+    display: grid;
+    gap: 20px;
+    @include media($tab) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      display: block;
+    }
+
+    figure {
+      margin: 0;
+      display: block;
+      position: relative;
+      z-index: 10;
+
+      &::before {
+        position: absolute;
+        content: '';
+        display: block;
+        inset: 0;
+        z-index: 9;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
+      }
+
+      @include fa('\f00e', 'far', 'after');
+      &::after {
+        position: absolute;
+        z-index: 999;
+        color: $white;
+
+        top: 15px;
+        right: 15px;
+      }
+    }
+  }
+}
+
+@media (hover: hover) {
+
+  .pt--image-grid {
+    figure {
+      overflow: hidden;
+      cursor: pointer;
+      img {
+        transition: all $base-duration $base-timing;
+      }
+      &:hover {
+        img {
+          scale: 1.1;
+        }
+      }
+    }
+  }
+}

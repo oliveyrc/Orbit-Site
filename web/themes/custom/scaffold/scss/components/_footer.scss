@@ -1,0 +1,65 @@
+.footer-top-wrapper {
+  //background-color: $cyprus;
+ // color: $white;
+}
+
+.footer-top {
+  padding: 20px;
+  display: grid;
+  grid-gap: 20px;
+  @include media($tab) {
+    padding: 30px;
+    grid-gap: 30px;
+    grid-template-columns: 6fr 2fr 2fr 2fr;
+
+  }
+}
+
+.footer-bottom-wrapper {
+  background-color: $white;
+
+}
+
+.footer-bottom {
+  background-color: $white;
+  padding: 15px;
+  display: grid;
+  grid-gap: 20px;
+  @include media($tab) {
+    grid-gap: 30px;
+    align-items: center;
+    grid-template-columns:1fr 1fr
+  }
+}
+
+
+.footer_5 {
+  text-align: center;
+  @include media($tab) {
+    text-align: left;
+
+  }
+
+  img {
+    display: inline-block;
+    margin-right: 20px;
+
+  }
+}
+
+.footer_6 {
+  text-align: center;
+  @include media($tab) {
+    text-align: right;
+  }
+}
+
+#site-footer {
+  margin-top: 30px;
+  @include media($tab) {
+    margin-top: 40px;
+  }
+  @include media($desk) {
+    margin-top: 100px;
+  }
+}

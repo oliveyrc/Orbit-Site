@@ -1,0 +1,48 @@
+@import "../base-imports";
+
+.news.news-teaser {
+  text-decoration: none;
+  color: #666;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-weight: normal;
+  .text {
+    flex-grow: 1;
+    background-color: #eee;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @include media($tab) {
+      padding: 30px;
+    }
+  }
+
+  h2 {
+    margin: 0;
+  }
+  .body {
+    flex-grow: 1;
+  }
+
+  .inner {
+    height: 100%;
+  }
+
+  .image {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      display: block;
+      transition: all $base-duration $base-timing;
+    }
+  }
+
+  &:hover {
+    img {
+      scale: 1.1;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@import "../base-imports";
+
+.pt--map {
+
+  .intro {
+    margin-bottom: 1rem;
+  }
+  #map {
+    height: 300px;
+    @include media($tab) {
+      height: 500px;
+    }
+    @include media($desk) {
+      height: 825px;
+    }
+    width: 100%;
+  }
+
+  .infoBox {
+    > img {
+      margin: 0;
+      position: absolute !important;
+      right: 10px;
+      top: 10px;
+    }
+  }
+
+  .inner {
+    padding: 10px;
+    color: $white;
+    background-color: $black;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  #infobox {
+    font-size: 1rem;
+
+    font-feature-settings: "kern", "liga", "pnum";
+    font-family: Poppins, sans-serif;
+    line-height: 1.5em;
+    padding-bottom: 20px;
+    background-image: url('/themes/custom/scaffold/images/map-arrow.svg');
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 88px 44px;
+  }
+
+  .text {
+    padding-right: 15px;
+  }
+
+  .image {
+    flex-shrink: 0;
+
+    img {
+      display: block;
+    }
+  }
+}

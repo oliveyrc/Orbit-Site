@@ -1,0 +1,24 @@
+
+dl {
+  margin-bottom: $spacing-small;
+
+  dt {
+    font-weight: bold;
+    margin-top: $spacing-small;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style: none;
+    margin-bottom: 0;
+    display: block;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "oyster-design/scaffold",
+  "description": "Oyster Scaffold - Basetheme for building new sites on.",
+  "type": "drupal-custom-theme",
+  "require": {
+    "php": ">=8.2"
+  }
+}

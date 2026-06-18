@@ -1,0 +1,391 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Oyster Scaffold theme.
+ */
+
+declare(strict_types=1);
+
+use Drupal\image\Entity\ImageStyle;
+use Drupal\media\Entity\Media;
+use Drupal\node\Entity\Node;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements template_preprocess_html().
+ *
+ * @param array $variables
+ */
+function scaffold_preprocess_html(&$variables)
+{
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  if (!empty($variables['page']['sidebar_first'])) {
+    $sidebar_left = $variables['page']['sidebar_first'];
+  }
+  else {
+    $sidebar_left = [];
+  }
+
+  if (!empty($variables['page']['sidebar_second'])) {
+    $sidebar_right = $variables['page']['sidebar_second'];
+  }
+  else {
+    $sidebar_right = [];
+  }
+
+  $current_node = \Drupal::routeMatch()->getParameter('node');
+  if (isset($current_node->nid->value)) {
+    $variables['attributes']['class'][] = 'page-node-' . $current_node->nid->value;
+  }
+
+  // Hack to stop sidebar showing when a empty menu block exists.
+  $sidebar_left = \Drupal::service('renderer')->render($sidebar_left);
+  $sidebar_right = \Drupal::service('renderer')->render($sidebar_right);
+
+  // Dynamic sidebars.
+  if (!empty($sidebar_left) && !empty($sidebar_right)) {
+    $variables['attributes']['class'][] = 'two-sidebars';
+  } elseif (empty($sidebar_left) && !empty($sidebar_right)) {
+    $variables['attributes']['class'][] = 'one-sidebar';
+    $variables['attributes']['class'][] = 'sidebar-second';
+  } elseif (!empty($sidebar_left) && empty($sidebar_right)) {
+    $variables['attributes']['class'][] = 'one-sidebar';
+    $variables['attributes']['class'][] = 'sidebar-first';
+  } else {
+    $variables['attributes']['class'][] = 'no-sidebars';
+  }
+
+  // Remove some useless classes, this should help stop the theme from breaking.
+  if (($node) && (($node->bundle() == 'basic_page_full_width') || ($node->bundle() == 'landing_page'))) {
+    $variables['attributes']['class'][] = 'no-sidebars';
+
+    // Remove unwanted classes.
+    $variables['attributes']['class'] = array_diff($variables['attributes']['class'], [
+      'one-sidebar',
+      'sidebar-first',
+      'sidebar-second',
+    ]);
+  }
+
+  $themecolor = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'theme-color',
+      'content' => '#2f3042',
+    ],
+  ];
+  $variables['page']['#attached']['html_head'][] = [$themecolor, 'themecolor'];
+
+  $touchicons = [
+    '72x72',
+    '114x114',
+    '144x144',
+    '120x120',
+    '76x76',
+    '152x152',
+  ];
+  foreach ($touchicons as $k => $v) {
+    $appletouchcode = [
+      '#tag' => 'link',
+      '#attributes' => [
+        'href' => '/themes/custom/scaffold/images/fav/apple-touch-icon-' . $v . '.png',
+        'rel' => 'apple-touch-icon',
+        'sizes' => $v,
+      ],
+    ];
+    $variables['#attached']['html_head'][] = [
+      $appletouchcode,
+      'appletouch' . $v,
+    ];
+  }
+
+  // Manifest file.
+  $manifest = [
+    '#tag' => 'link',
+    '#attributes' => [
+      'rel' => 'manifest',
+      'href' => '/themes/custom/scaffold/manifest.json',
+    ],
+  ];
+  $variables['page']['#attached']['html_head'][] = [$manifest, 'manifest'];
+
+  // Preconnects for typekit.
+  //  $typkitpre = [
+  //    '#tag' => 'link',
+  //    '#attributes' => [
+  //      'rel' => 'preconnect',
+  //      'href' => 'https://use.typekit.net',
+  //      'crossorigin' => 'anonymous',
+  //    ],
+  //  ];
+  //  $variables['page']['#attached']['html_head'][] = [$typkitpre, 'typkitpre'];
+
+  // Preconnects for googlefont.
+  /*
+  $googlefontpre = [
+    '#tag' => 'link',
+    '#attributes' => [
+      'rel' => 'preconnect',
+      'href' => 'https://fonts.googleapis.com',
+      'crossorigin' => 'anonymous',
+    ],
+  ];
+  $variables['page']['#attached']['html_head'][] = [$googlefontpre, 'googlefontpre'];
+  */
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function scaffold_theme_suggestions_page_alter(array &$suggestions, array $variables)
+{
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (is_string($node)) {
+    $node = Node::load($node);
+  }
+  if (!empty($node)) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__' . $content_type;
+  }
+}
+
+/**
+ * Remove the generator tag.
+ *
+ * @param array $attachments
+ */
+function scaffold_page_attachments_alter(array &$attachments)
+{
+  foreach ($attachments['#attached']['html_head'] as $key => $attachment) {
+    if ($attachment[1] == 'system_meta_generator') {
+      unset($attachments['#attached']['html_head'][$key]);
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_block().
+ *
+ * - Check and add any background colour to the block class.
+ * - Set up the social icons link attributes.
+ *
+ * @param $variables
+ *
+ * @return void
+ */
+function scaffold_preprocess_block(&$variables): void
+{
+  $variables['plugin_id'] = $variables['elements']['#plugin_id'];
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $block_type = $variables['elements']['content']['#block_content']->bundle();
+
+    switch ($block_type) {
+      case 'social_icons':
+        $variables['attributes']['class'][] = 'social-icons';
+        break;
+    }
+  }
+
+  if ((array_key_exists('field_background_colour', $variables['content'])) && (!empty($variables['content']['field_background_colour'][0]))) {
+    $variables['background_colour'] = 'bg-colour-' . str_replace('#', '', $variables['content']['field_background_colour'][0]['#markup']);
+  }
+
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ *
+ * - Adds background colour variable to template variables.
+ * - Adds image position to template variables.
+ * - Adds collapsing margin/padding support to template variables.
+ * - Auto adds library based on paragraph machine name.
+ * - Adds animate class if needed.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ *   - paragraph: The paragraph object.
+ *   - view_mode: View mode; e.g., 'full', 'teaser'...
+ */
+function scaffold_preprocess_paragraph(&$variables)
+{
+  $paragraph = $variables['paragraph'];
+
+  // Always include a library with matching paragraph machine name, just in case a template file is no needed.
+  $variables['#attached']['library'][] = 'scaffold/paragraph.' . $paragraph->type->target_id;
+
+  if ($paragraph->hasField('field_oyster_pt_bg_colour') && (!$paragraph->get('field_oyster_pt_bg_colour')
+      ->isEmpty())) {
+    $variables['background_colour'] = 'bg-colour-' . $paragraph->get('field_oyster_pt_bg_colour')
+        ->getString();
+  }
+
+  if (array_key_exists('field_image_position', $variables['content'])) {
+    $variables['image_position'] = 'image-position-' . $variables['content']['field_image_position'][0]['#markup'];
+  }
+
+  $sides = ['t', 'r', 'b', 'l'];
+
+  // Collapsing margin support.
+  foreach ($sides as $side) {
+    $variables['remove_margin_' . $side] = '';
+    if (($paragraph->hasField('field_oyster_pt_rm' . $side)) && (!$paragraph->get('field_oyster_pt_rm' . $side)
+        ->isEmpty()) && ($paragraph->get('field_oyster_pt_rm' . $side)
+          ->getValue()[0]['value'] == 1)) {
+      $variables['remove_margin_' . $side] = 'rm' . $side;
+    }
+  }
+
+  // Expanding margin support.
+  foreach ($sides as $side) {
+    $variables['add_margin_' . $side] = '';
+    if (($paragraph->hasField('field_oyster_pt_am' . $side)) && (!$paragraph->get('field_oyster_pt_am' . $side)
+        ->isEmpty()) && ($paragraph->get('field_oyster_pt_am' . $side)
+          ->getValue()[0]['value'] == 1)) {
+      $variables['add_margin_' . $side] = 'am' . $side;
+    }
+  }
+
+
+  // Collapsing padding support.
+  foreach ($sides as $side) {
+    $variables['remove_padding_' . $side] = '';
+    if (($paragraph->hasField('field_oyster_pt_rp' . $side)) && (!$paragraph->get('field_oyster_pt_rp' . $side)
+        ->isEmpty()) && ($paragraph->get('field_oyster_pt_rp' . $side)
+          ->getValue()[0]['value'] == 1)) {
+      $variables['remove_padding_' . $side] = 'rp' . $side;
+    }
+  }
+
+
+  // Expanding padding support.
+  foreach ($sides as $side) {
+    $variables['add_padding_' . $side] = '';
+    if (($paragraph->hasField('field_oyster_pt_ap' . $side)) && (!$paragraph->get('field_oyster_pt_ap' . $side)
+        ->isEmpty()) && ($paragraph->get('field_oyster_pt_ap' . $side)
+          ->getValue()[0]['value'] == 1)) {
+      $variables['add_padding_' . $side] = 'ap' . $side;
+    }
+  }
+
+  // Should this paragraph be animated.
+  if ($paragraph->hasField('field_oyster_pt_animate')) {
+    if ((!$paragraph->get('field_oyster_pt_animate')->isEmpty()) && ($paragraph->get('field_oyster_pt_animate')
+          ->getValue()[0]['value'] == 1)) {
+      $variables['animate'] = 'animate';
+    }
+  }
+}
+
+
+/**
+ * Implements template_preprocess_paragraph__oyster_pt_social_icon().
+ *
+ * Add the link attributes to the variables array.
+ *
+ * @param $variables
+ * @return void
+ */
+function scaffold_preprocess_paragraph__oyster_pt_social_icon(&$variables)
+{
+  $paragraph = $variables['paragraph'];
+  $link = $paragraph->get('field_oyster_pt_social_icon_link')->getValue()[0];
+
+  $variables['attributes'] = $link['options']['attributes'];
+}
+
+/**
+ * Implements template_preprocess_region.
+ *
+ * @param array $variables
+ */
+function scaffold_preprocess_region(&$variables): void
+{
+  $variables['attributes']['class'][] = $variables['region'];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ *
+ * - See https://www.drupal.org/node/2724333 for more info.
+ */
+function scaffold_theme_suggestions_block_alter(array &$suggestions, array $variables)
+{
+  // Block suggestions for custom block bundles.
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+}
+
+/**
+ * Implements theme_preprocess_node().
+ *
+ * Https://stackoverflow.com/questions/43771500/using-preprocess-hook-on-specific-node-type-in-drupal-8
+ *
+ * @param $variables
+ *
+ * @return void
+ */
+function scaffold_preprocess_node(&$variables): void
+{
+  $function = __FUNCTION__ . '__' . $variables['node']->getType();
+  // Each node type can have its own specific function.
+  if (function_exists($function)) {
+    $function($variables);
+  }
+}
+
+/**
+ * Implements theme_suggestions_HOOK_alter().
+ */
+function scaffold_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void
+{
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+
+  /** @var \Drupal\Core\Entity\ContentEntityInterface $parent */
+  $parent = $paragraph->getParentEntity();
+  $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $parent->bundle();
+
+  $field_name = str_replace('field_', '', $paragraph->get('parent_field_name')
+    ->getString());
+
+  // Add field specific template override-ability.
+  $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $field_name;
+}
+
+
+/**
+ * @param $variables
+ *
+ * @return void
+ */
+function scaffold_preprocess_paragraph__map(&$variables)
+{
+  $paragraph = $variables['paragraph'];
+  $image = NULL;
+
+  if (!$paragraph->get('field_oyster_pt_map_tooltip_imag')->isEmpty()) {
+    $media = Media::load($paragraph->get('field_oyster_pt_map_tooltip_imag')
+      ->getValue()[0]['target_id']);
+    $fid = $media->field_media_image->target_id;
+    $file = File::load($fid);
+
+    //you can find them here: admin/config/media/image-styles
+    $image = '<img src="' . ImageStyle::load('map_pin')
+        ->buildUrl($file->getFileUri()) . '" width="85" height="85" />';
+  }
+  $text = $paragraph->get('field_oyster_pt_map_tooltip_text')->getValue();
+  $variables['#attached']['drupalSettings']['paragraph_google_map'] = [];
+  $variables['#attached']['drupalSettings']['paragraph_google_map'][] = [
+    'lat' => $paragraph->get('field_oyster_pt_map_pin')
+      ->getValue()[0]['lat'],
+    'lng' => $paragraph->get('field_oyster_pt_map_pin')
+      ->getValue()[0]['lon'],
+    'image' => $image,
+    'text' => $text,
+  ];
+}

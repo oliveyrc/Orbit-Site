@@ -1,0 +1,49 @@
+@import "variables/typography";
+
+.ck-content {
+  font-family: $base-font-family;
+  font-size: 16px;
+}
+
+.field--name-title {
+  input {
+    font-family: $base-font-family;
+  }
+}
+
+.oyster_two_col {
+  padding: 8px;
+  margin: 10px;
+  background: #eee;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 1px #fff inset, 0 -1px 0px #ccc inset;
+  clear: both;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.oyster_three_col {
+  padding: 8px;
+  margin: 10px;
+  background: #eee;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 1px #fff inset, 0 -1px 0px #ccc inset;
+  clear: both;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.oyster_left,
+.oyster_middle,
+.oyster_right {
+  padding: 10px;
+  border-radius: 5px;
+  background-color:white;
+  box-shadow: 0 1px 1px #fff inset, 0 -1px 0px #ccc inset;
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+}

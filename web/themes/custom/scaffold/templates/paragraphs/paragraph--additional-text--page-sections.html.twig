@@ -1,0 +1,21 @@
+{{ attach_library('scaffold/paragraph.additional_text') }}
+
+{% set classes = [
+  'p',
+  'pt--' ~ paragraph.bundle|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished',
+  animate
+] %}
+{% block paragraph %}
+  <section{{ attributes.addClass(classes) }} {% if logged_in %}{{ attributes.setAttribute('id', 'p--id--'~paragraph.id() ) }}{% endif %}>
+    <div class="grid">
+      {% block content %}
+        {% if not paragraph.field_oyster_pt_section_title.isEmpty() %}
+          <h2>{{ content.field_oyster_pt_section_title.0 }}</h2>
+        {% endif %}
+        {{ content.field_oyster_pt_at_text.0 }}
+        {{ content|without('field_oyster_pt_admin_desc','field_oyster_pt_at_text','field_oyster_pt_section_title') }}
+      {% endblock %}
+    </div>
+  </section>
+{% endblock paragraph %}

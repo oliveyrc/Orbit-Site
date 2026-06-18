@@ -1,0 +1,23 @@
+@import "../base-imports";
+
+.paragraph--type--inline-cta {
+  .inner {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include media($tab) {
+      justify-content: left;
+      flex-direction: row;
+      gap: 30px;
+    }
+
+    .title {
+      font-size: 1.25rem;
+    }
+
+    .link {
+      flex-shrink: 1;
+    }
+  }
+}

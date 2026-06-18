@@ -1,0 +1,38 @@
+@import "../base-imports";
+
+.oyster-banner {
+
+
+  video {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+  }
+
+  button {
+    border: 0;
+    background: none;
+
+    i {
+      color: $white;
+      font-size: 20px;
+    }
+
+    &[aria-pressed="true"] {
+      i {
+        color: $black;
+      }
+    }
+  }
+}

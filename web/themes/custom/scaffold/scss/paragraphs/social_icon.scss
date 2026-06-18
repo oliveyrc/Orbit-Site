@@ -1,0 +1,33 @@
+@import "../base-imports";
+
+$icon_size: 40px;
+
+.block.social-icons {
+
+  .block__content {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    @include media($tab) {
+      gap: 15px;
+    }
+  }
+
+  img {
+    height: $icon_size;
+    display: block;
+  }
+
+  i {
+    font-size: $icon_size;
+  }
+
+  a {
+    display: inline-block;
+    color: $text;
+
+    img {
+      filter: invert(28%) sepia(6%) saturate(181%) hue-rotate(202deg) brightness(93%) contrast(84%);
+    }
+  }
+}

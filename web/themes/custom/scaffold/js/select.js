@@ -1,0 +1,1 @@
+var config={create:!1,allowEmptyOption:!0,controlInput:null};document.querySelectorAll(".form-select").forEach(e=>{new TomSelect(e,config)});

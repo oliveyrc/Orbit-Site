@@ -1,0 +1,20 @@
+{{ attach_library('scaffold/paragraph.quote') }}
+
+{% set classes = [
+  'p',
+  'pt--' ~ paragraph.bundle|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished',
+  bg_colour,
+  animate
+] %}
+{% block paragraph %}
+  <section{{ attributes.addClass(classes) }} {% if logged_in %}{{ attributes.setAttribute('id', 'p--id--'~paragraph.id() ) }}{% endif %}>
+    {% block content %}
+      <div class="quote">{{ content.field_oyster_pt_quote_quote.0 }}</div>
+      {% if not paragraph.field_oyster_pt_quote_by.isEmpty() %}
+        <div class="by">{{ content.field_oyster_pt_quote_by.0 }}</div>
+      {% endif %}
+      {{ content|without('field_oyster_pt_admin_desc','field_oyster_pt_animate','field_oyster_pt_quote_by', 'field_oyster_pt_quote_quote','field_oyster_pt_bg_colour') }}
+    {% endblock %}
+  </section>
+{% endblock paragraph %}

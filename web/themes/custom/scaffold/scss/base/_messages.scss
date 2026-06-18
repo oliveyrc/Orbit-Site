@@ -1,0 +1,49 @@
+.status-messages {
+  .error {
+    @include flash($error-color);
+  }
+
+  .status {
+    @include flash($success-color);
+  }
+
+  .notice {
+    @include flash($notice-color);
+  }
+
+  .warning {
+    @include flash($alert-color);
+  }
+}
+
+
+
+.messages__wrapper {
+  .messages--error {
+    @include flash(#FFE0E0);
+    @include fa('\f057', 'fas');
+  }
+
+  .messages--status {
+    @include flash(#D2E4CB);
+    @include fa('\f058', 'fas');
+  }
+
+  .messages--notice {
+    @include flash($notice-color);
+  }
+
+  .messages--warning {
+    @include flash(#FFF4DD);
+    @include fa('\f06a', 'fas');
+  }
+
+  .messages {
+    position: relative;
+    &::before {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+    }
+  }
+}

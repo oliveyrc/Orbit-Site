@@ -1,0 +1,1 @@
+{"version":3,"sources":["text.scss"],"names":[],"mappings":"AAAA,EACE,UAAA,CAEA,gBAAA,CADA,WACA","file":"../text.css","sourcesContent":["p {\n  color: yellow;\n  padding: 2px;\n  font-size: 3.1rem;\n}"]}
