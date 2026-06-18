@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  DEPLOY_PATH: /home/janusoysterdesig/Orbit/web
+  DEPLOY_PATH: /home/janusoysterdesig/Orbit
   DRUSH_PATH: /home/janusoysterdesig/Orbit/vendor/bin/drush
 
 jobs:
@@ -32,23 +32,26 @@ jobs:
               set -e
               cd ${{ env.DEPLOY_PATH }}
 
+              # Composer install to ensure dependencies are up to date
+              composer install --no-dev --optimize-autoloader
+
               # Pull latest code from main
               git pull origin main
 
-              # # Put site into maintenance mode
-              # ${{ env.DRUSH_PATH }} state:set system.maintenance_mode 1 -y
+              # Put site into maintenance mode
+              ${{ env.DRUSH_PATH }} state:set system.maintenance_mode 1 -y
 
-              # # Run database updates
-              # ${{ env.DRUSH_PATH }} updatedb -y
+              # Run database updates
+              ${{ env.DRUSH_PATH }} updatedb -y
 
-              # # Import config from sync directory
-              # ${{ env.DRUSH_PATH }} config:import -y
+              # Import config from sync directory
+              ${{ env.DRUSH_PATH }} config:import -y
 
-              # # Rebuild caches
-              # ${{ env.DRUSH_PATH }} cache:rebuild
+              # Rebuild caches
+              ${{ env.DRUSH_PATH }} cache:rebuild
 
-              # # Bring site back online
-              # ${{ env.DRUSH_PATH }} state:set system.maintenance_mode 0 -y
+              # Bring site back online
+              ${{ env.DRUSH_PATH }} state:set system.maintenance_mode 0 -y
 
               echo "Deploy complete."
           ENDSSH
