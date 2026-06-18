@@ -9,7 +9,7 @@ $config['environment_indicator.indicator']['name'] = 'Live';
 /**
  * Private files Directory
  */
-$settings['file_private_path'] = ''; // add private directory here. Jelastic is usually: /var/www/webroot/ROOT/private or /var/www/webroot/private
+$settings['file_private_path'] = '';
 
 /**
  * Config sync directory
