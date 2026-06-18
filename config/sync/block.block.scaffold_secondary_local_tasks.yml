@@ -1,0 +1,22 @@
+uuid: d546db1d-4233-4724-ac51-53375c1f3f21
+langcode: en-gb
+status: true
+dependencies:
+  theme:
+    - scaffold
+_core:
+  default_config_hash: ydSxdq7R66I8UMC460rOzlfzvlUL4VRbdwc6z9DWaUI
+id: scaffold_secondary_local_tasks
+theme: scaffold
+region: search_header
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

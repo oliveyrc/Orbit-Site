@@ -1,0 +1,22 @@
+uuid: 9f25c6f4-f278-4184-b79c-69efb4b0f41b
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - scaffold
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: scaffold_help
+theme: scaffold
+region: search_header
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

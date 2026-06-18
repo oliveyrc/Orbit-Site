@@ -1,0 +1,20 @@
+uuid: d34640c5-d685-4fcc-abe7-a4422108c531
+langcode: en-gb
+status: true
+dependencies:
+  theme:
+    - scaffold
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: scaffold_page_title
+theme: scaffold
+region: search_header
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }
