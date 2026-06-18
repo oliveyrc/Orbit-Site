@@ -32,6 +32,7 @@ jobs:
               set -e
               cd ${{ env.DEPLOY_PATH }}
 
+              # Set permissions for the web/sites/default directory
               chmod 777 web/sites/default
 
               # Composer install to ensure dependencies are up to date
