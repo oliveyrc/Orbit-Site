@@ -1,0 +1,11 @@
+uuid: ca2942d1-7953-4659-a9b1-cfed366ba4ad
+langcode: en-gb
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: LKO2EO30sy2kWHsMrcgwaiMZbKstP3ocCslZdSJpvCM
+name: 'Media Tags'
+vid: media_tags
+description: 'Allows the tagging of media assets'
+weight: 0
+new_revision: false

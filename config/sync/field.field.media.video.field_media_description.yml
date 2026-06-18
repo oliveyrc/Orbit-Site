@@ -1,0 +1,21 @@
+uuid: ee689b71-7a68-418b-b71a-d3aff4376882
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_description
+    - media.type.video
+_core:
+  default_config_hash: cqZFfpSKW-p_MQr_SexHkSVfqJ34TWqIMleu-GX36fk
+id: media.video.field_media_description
+field_name: field_media_description
+entity_type: media
+bundle: video
+label: Description
+description: 'A simple description used in the CMS back end, this is also used when searching media in the library.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

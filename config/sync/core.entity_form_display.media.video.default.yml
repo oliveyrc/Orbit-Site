@@ -1,0 +1,82 @@
+uuid: 3a5b2840-66f8-4687-8df6-29777f8a6b8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.video.field_media_caption
+    - field.field.media.video.field_media_description
+    - field.field.media.video.field_media_poster_image
+    - field.field.media.video.field_media_video_file
+    - field.field.media.video.field_tags
+    - image.style.thumbnail
+    - media.type.video
+  module:
+    - file
+    - image
+_core:
+  default_config_hash: 0kIIaDTt6dixXy8TZkat2MNGZJ6vkRG8TaBWTy3E1bM
+id: media.video.default
+targetEntityType: media
+bundle: video
+mode: default
+content:
+  field_media_caption:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_description:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_poster_image:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_media_video_file:
+    type: file_generic
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_tags:
+    type: entity_reference_autocomplete_tags
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  name: true
+  path: true
+  uid: true
