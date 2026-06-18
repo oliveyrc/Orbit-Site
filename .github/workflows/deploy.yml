@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  DEPLOY_PATH: ~/public_html/your-drupal-site
-  DRUSH_PATH:  ~/public_html/your-drupal-site/vendor/bin/drush
+  DEPLOY_PATH: /home/janusoysterdesig/Orbit/web
+  DRUSH_PATH: /home/janusoysterdesig/Orbit/vendor/bin/drush
 
 jobs:
   deploy:
