@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "369006512a1195ad31da4c6244c7761d",
+    "content-hash": "0a7102675da95271b8e4743ee8b9febf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5792,6 +5792,46 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.7.0"
             },
             "time": "2025-12-06T11:56:16+00:00"
+        },
+        {
+            "name": "oliveyrc/orbit_media",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oliveyrc/orbit_media.git",
+                "reference": "c2cb6f9a4141046418c83024e3a8fa2c23367658"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oliveyrc/orbit_media/zipball/c2cb6f9a4141046418c83024e3a8fa2c23367658",
+                "reference": "c2cb6f9a4141046418c83024e3a8fa2c23367658",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/dropzonejs": "*",
+                "drupal/glightbox": "*",
+                "drupal/media_bulk_upload": "*",
+                "drupal/media_library_edit": "*",
+                "php": "^8.4"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Richard Olivey",
+                    "email": "richard@olivey.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides Orbit media functionality.",
+            "support": {
+                "issues": "https://github.com/oliveyrc/orbit_media/issues",
+                "source": "https://github.com/oliveyrc/orbit_media/tree/1.0.2"
+            },
+            "time": "2026-06-09T19:10:05+00:00"
         },
         {
             "name": "pear/archive_tar",

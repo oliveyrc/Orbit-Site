@@ -1,0 +1,20 @@
+{
+  "name": "oliveyrc/orbit_media",
+  "type": "drupal-module",
+  "description": "Provides Orbit media functionality.",
+  "license": "MIT",
+  "require": {
+    "php": "^8.4",
+    "drupal/media_library_edit": "*",
+    "drupal/media_bulk_upload": "*",
+    "drupal/dropzonejs": "*",
+    "drupal/glightbox": "*"
+  },
+  "authors": [
+    {
+      "name": "Richard Olivey",
+      "email": "richard@olivey.net",
+      "role": "Developer"
+    }
+  ]
+}

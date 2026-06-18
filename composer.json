@@ -76,7 +76,8 @@
         "drupal/webform": "^6.3@beta",
         "drush/drush": "^13.7",
         "enyo/dropzone": "^6.0@beta",
-        "exif-js/exif-js": "^2.3"
+        "exif-js/exif-js": "^2.3",
+        "oliveyrc/orbit_media": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
