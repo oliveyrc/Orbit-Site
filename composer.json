@@ -1,0 +1,164 @@
+{
+    "name": "drupal/recommended-project",
+    "description": "Project template for Drupal projects with a relocated document root",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/drupal",
+    "support": {
+        "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
+        "chat": "https://www.drupal.org/node/314178"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "enyo/dropzone",
+                "version": "6.0.0-beta.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/dropzone/dropzone/releases/download/v6.0.0-beta.2/dist.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "exif-js/exif-js",
+                "version": "v2.3.0",
+                "type": "drupal-library",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/exif-js/exif-js/archive/refs/tags/v2.3.0.zip"
+                }
+            }
+        }
+    ],
+    "require": {
+        "composer/installers": "^2.3",
+        "drupal/better_exposed_filters": "^7.1",
+        "drupal/captcha": "^2.0",
+        "drupal/config_inspector": "^2.1",
+        "drupal/configurable_views_filter_block": "^1.0",
+        "drupal/core-composer-scaffold": "^11.3",
+        "drupal/core-project-message": "^11.3",
+        "drupal/core-recipe-unpack": "^11.3",
+        "drupal/core-recommended": "^11.3",
+        "drupal/devel": "^5.5",
+        "drupal/diff": "^2.0",
+        "drupal/dropzonejs": "2.x-dev@dev",
+        "drupal/entity_browser": "2.x-dev@dev",
+        "drupal/entity_clone": "^2.2@beta",
+        "drupal/entity_usage": "^2.0@beta",
+        "drupal/facets": "^3.0",
+        "drupal/field_group": "^4.0",
+        "drupal/gin": "^5.0",
+        "drupal/glightbox": "^1.0",
+        "drupal/image_widget_crop": "^3.0",
+        "drupal/inline_entity_form": "^3.0@RC",
+        "drupal/media_bulk_upload": "^3.0",
+        "drupal/media_library_edit": "^3.0",
+        "drupal/media_thumbnails_video": "^2.0",
+        "drupal/paragraphs": "^1.20",
+        "drupal/paragraphs_ee": "^10.0",
+        "drupal/revision_log_default": "^1.4",
+        "drupal/search_api": "^1.40",
+        "drupal/search_api_autocomplete": "^1.11",
+        "drupal/search_api_block": "^1.2",
+        "drupal/search_api_exclude_entity": "^3.0",
+        "drupal/stage_file_proxy": "^3.1",
+        "drupal/upgrade_status": "^4.3",
+        "drupal/views_data_export": "^1.10",
+        "drupal/webform": "^6.3@beta",
+        "drush/drush": "^13.7",
+        "enyo/dropzone": "^6.0@beta",
+        "exif-js/exif-js": "^2.3"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/core-recipe-unpack": true,
+            "php-http/discovery": true,
+            "php-tuf/composer-integration": true,
+            "phpstan/extension-installer": true,
+            "tbachert/spi": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ],
+            "recipes/{$name}": [
+                "type:drupal-recipe"
+            ]
+        },
+
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                         </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+                "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Install the site: https://www.drupal.org/docs/installing-drupal",
+                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                "  * Get support: https://www.drupal.org/support",
+                "  * Get involved with the Drupal community:",
+                "      https://www.drupal.org/getting-involved",
+                "  * Remove the plugin that prints this message:",
+                "      composer remove drupal/core-project-message"
+            ]
+        }
+    },
+    "require-dev": {
+        "drupal/core-dev": "^11"
+    }
+}

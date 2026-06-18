@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Contains search_api_exclude_entity.module.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'field_storage_config_edit_form'.
+ */
+function search_api_exclude_entity_form_field_storage_config_edit_form_alter(&$form, FormStateInterface $form_state): void {
+  if ($form_state->getFormObject()->getEntity()->getType() == 'search_api_exclude_entity') {
+    // Hide the cardinality field.
+    $form['cardinality_container']['#access'] = FALSE;
+    $form['cardinality_container']['#disabled'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function search_api_exclude_entity_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL): AccessResultInterface {
+  if ($field_definition->getType() == 'search_api_exclude_entity' && $operation == 'edit') {
+    return AccessResult::allowedIfHasPermission($account, 'edit search api exclude entity')->isAllowed() ? AccessResult::allowed() : AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
+}

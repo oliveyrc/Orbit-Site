@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Install file for Media Thumbnails Video module.
+ */
+
+use FFMpeg\Exception\ExecutableNotFoundException;
+use FFMpeg\FFMpeg;
+
+/**
+ * Implements hook_requirements().
+ */
+function media_thumbnails_video_requirements($phase) {
+  $requirements = [];
+  if ('runtime' === $phase) {
+    $config = \Drupal::config('media_thumbnails_video.settings');
+    try {
+      $configuration = [
+        'timeout' => $config->get('timeout'),
+        'ffmpeg.threads' => $config->get('threads'),
+      ];
+
+      if ($ffmpeg = $config->get('ffmpeg')) {
+        $configuration['ffmpeg.binaries'] = $ffmpeg;
+      }
+
+      if ($ffprobe = $config->get('ffprobe')) {
+        $configuration['ffprobe.binaries'] = $ffprobe;
+      }
+
+      FFMpeg::create($configuration);
+      
+      $requirements['ffmpeg'] = [
+        'title' => t('FFmpeg'),
+        'value' => t('Installed'),
+        'severity' => REQUIREMENT_OK,
+      ];
+    }
+    catch (ExecutableNotFoundException $e) {
+      $requirements['ffmpeg'] = [
+        'title' => t('FFmpeg'),
+        'value' => t('Not installed'),
+        'severity' => REQUIREMENT_ERROR,
+        'description' => t('FFmpeg is required to generate video thumbnails.'),
+      ];
+    }
+  }
+  return $requirements;
+}

@@ -1,0 +1,10 @@
+plugin.plugin_configuration.search_api_processor.search_api_exclude_entity_by_field_processor:
+  type: mapping
+  label: 'Search Api Exclude Entity settings'
+  mapping:
+    fields:
+      type: sequence
+      label: 'Fields'
+      sequence:
+        label: 'Field name'
+        type: string

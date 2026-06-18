@@ -1,0 +1,3 @@
+edit search api exclude entity:
+  title: 'Edit search api exclude entity'
+  description: 'Modify per-object exclude settings.'

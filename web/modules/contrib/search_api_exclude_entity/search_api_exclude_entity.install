@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for search_api_exclude_entity module.
+ */
+
+/**
+ * Set the default setting for use_options to TRUE.
+ */
+function search_api_exclude_entity_update_10001(&$sandbox): void {
+  $field_name = 'field_exclude_from_search';
+
+  $entity_storage = \Drupal::service('entity_type.manager')
+    ->getStorage('entity_form_display');
+
+  /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $entity_form_display */
+  foreach ($entity_storage->loadMultiple() as $entity_form_display) {
+    $components = $entity_form_display->getComponents();
+    if (isset($components[$field_name])) {
+      $options = $components[$field_name];
+      $options['settings']['use_details_container'] = TRUE;
+      $entity_form_display->setComponent($field_name, $options)->save();
+    }
+  }
+
+}
+
+/**
+ * Remove old Search API Entity Exclude permission with new permission.
+ */
+function search_api_exclude_entity_update_300001(): void {
+  $roles = \Drupal::entityTypeManager()->getStorage('user_role')->loadMultiple();
+  foreach ($roles as $role) {
+    if ($role->hasPermission('administer search api exclude entity')) {
+      $role->revokePermission('administer search api exclude entity');
+      $role->grantPermission('edit search api exclude entity');
+      $role->save();
+    }
+  }
+}
