@@ -1,0 +1,54 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DEPLOY_PATH: ~/public_html/your-drupal-site
+  DRUSH_PATH:  ~/public_html/your-drupal-site/vendor/bin/drush
+
+jobs:
+  deploy:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add server to known hosts
+        run: |
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} \
+            ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy and run Drush sequence
+        run: |
+          ssh -p ${{ secrets.SSH_PORT }} \
+            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
+              set -e
+              cd ${{ env.DEPLOY_PATH }}
+
+              # Pull latest code from main
+              git pull origin main
+
+              # # Put site into maintenance mode
+              # ${{ env.DRUSH_PATH }} state:set system.maintenance_mode 1 -y
+
+              # # Run database updates
+              # ${{ env.DRUSH_PATH }} updatedb -y
+
+              # # Import config from sync directory
+              # ${{ env.DRUSH_PATH }} config:import -y
+
+              # # Rebuild caches
+              # ${{ env.DRUSH_PATH }} cache:rebuild
+
+              # # Bring site back online
+              # ${{ env.DRUSH_PATH }} state:set system.maintenance_mode 0 -y
+
+              echo "Deploy complete."
+          ENDSSH
